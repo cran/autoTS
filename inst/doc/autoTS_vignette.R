@@ -6,8 +6,8 @@ suppressPackageStartupMessages(library(lubridate))
 library(autoTS)
 
 ## -----------------------------------------------------------------------------
-tmp_dir <- tempdir() %>% stringr::str_replace_all("\\\\","/")
-unzip(zipfile = "../inst/extdata/namq_10_gdp.zip",exdir = tmp_dir)
+tmp_dir <- tempdir() %>% normalizePath()
+  unzip(zipfile = "../inst/extdata/namq_10_gdp.zip",exdir = tmp_dir)
 dat <- read.csv(paste0(tmp_dir,"/namq_10_gdp_1_Data.csv"))
 file.remove(paste0(tmp_dir,"/namq_10_gdp_1_Data.csv"),paste0(tmp_dir,"/namq_10_gdp_Label.csv"))
 str(dat)
